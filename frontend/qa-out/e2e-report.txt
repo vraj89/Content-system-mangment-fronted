@@ -1,0 +1,52 @@
+=== MARKETING create client ===
+Marketing: client create submitted via UI
+Marketing: client list contains new client? true len=883
+Marketing: clientId via API=6a940955079e1b2fd45c0ca9
+Marketing: submit response 200 {"success":true,"statusCode":200,"message":"Client submitted for verification","data":{"_id":"6a940955079e1b2fd45c0ca9","companyName":"E2E Corp 603612","clientName":"E2E Client","email":"e2e603612@testcorp.com","phone":"+15550001111","productInformation":"Test product info","campaignInformation":"Me
+=== ADMIN approve client ===
+Admin dashboard len=2146 has Pending? true
+Admin: clicked Approve on client detail
+  after approve body has APPROVED? false / status?      CSMContent OperationsDashboardMainProjectsClientsUsersApprovalsPending ApprovalsRevisionsReady to PublishMonitoringEscalationsOverdue & BlockedFi
+Admin: client status after approve=APPROVED
+Admin: project created? 6a94096b079e1b2fd45c0d6c E2E Corp 603612 Campaign status=ACTIVE
+=== TASK MANAGEMENT create tasks ===
+TaskMgr: content task created via UI
+  after content task body len 2404
+TaskMgr: tasks found 17, titles: E2E Content Task 603612 | E2E Content Task 425527 | E2E Content Task 019922
+TaskMgr: contentTaskId=6a94097b079e1b2fd45c0e13 mediaTaskId=6a9404bd079e1b2fd45bf54d
+Kanban board loaded len=1154 has Pending In Progress
+Kanban: move content task to IN_PROGRESS via API 200
+Kanban after reload has IN_PROGRESS? true
+Kanban: verified status persisted=IN_PROGRESS
+=== CONTENT TEAM create content ===
+Content dashboard len=1893
+Content: created via dashboard modal
+Content: contentId=6a940991079e1b2fd45c0edb
+Content: update draft 200
+Content: submit 200 {"success":true,"statusCode":200,"message":"Content submitted","data":{"_id":"6a940991079e1b2fd45c0edb","title":"E2E Hero Copy 603612","captions":["caption1"],"hashtags":["test"],"projectId":"6a94096b079e1b2fd45c0d6c","clientId":"6a940955079e1b2fd45c
+Content: verified status after reload=SUBMITTED
+Content: versions count=2 vs=1,2
+=== MEDIA TEAM upload ===
+Media: upload result=6a9409a3079e1b2fd45c100b
+Media: list count=11 first file=e2e-test.png
+Media: detail status=READY_FOR_REVIEW version=1
+=== ADMIN approve content/media ===
+Admin: approve content approval 6a940996079e1b2fd45c0f48 -> 200 {"success":true,"statusCode":200,"message":"Approval granted","data":{"_id":"6a940996079e1b2fd45c0f48","entityType":"CONTENT","entityId":"6a940991079e1b2fd45c0edb","projectId":"6a94096b079e1b2fd45c0d6
+Admin: pending MEDIA approvals 3
+Admin: approve media 6a9409a4079e1b2fd45c1013 -> 200
+Admin: pending approvals for project 0
+Admin: content status after approve=APPROVED
+Set password for e2e603612@testcorp.com
+=== CLIENT review & approval ===
+Client: logged in as e2e603612@testcorp.com
+Client project page len=507 has Approve? true
+Client: clicked Approve Project button
+Client: project clientApproved=true status=ACTIVE
+=== ADMIN publish ===
+Admin: transition to READY_TO_PUBLISH 200 {"success":true,"statusCode":200,"message":"Project updated","data":{"_id":"6a94096b079e1b2fd45c0d6c","clientId":"6a940955079e1b2fd45c0ca9","createdBy":"6a91c17b0694c4066086db78","name":"E2E Corp 6036
+ReadyToPublish page len=602 has project? false bodyHasReady? true
+Admin: Publish button found on ReadyToPublish page, clicking
+Admin: Confirmed publish via UI
+Admin: publish API 200 {"success":true,"statusCode":200,"message":"Project published","data":{"_id":"6a94096b079e1b2fd45c0d6c","clientId":"6a940955079e1b2fd45c0ca9","createdBy":"6a91c17b0694c4066086db78","name":"E2E Corp 603612 Campaign","description":"Media deliverables","requirements":"Test campaign","status":"PUBLISHED
+Admin: final project status=PUBLISHED clientApproved=true adminApproved=true
+=== ERRORS collected ===
